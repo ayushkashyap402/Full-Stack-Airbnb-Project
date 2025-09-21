@@ -1,6 +1,7 @@
 # 🏡 Airbnb Clone  
 
-![Airbnb Clone Screenshot](./public/images/project-screenshot.png)  
+![Airbnb Clone Screenshot](./public/images/project-screenshot.png) 
+![Airbnb Clone Screenshot](./public/images/project-screenshot2.png)   
 *(Replace the above path with your actual screenshot or hosted image URL)*  
 
 ## 📌 Project Overview  
