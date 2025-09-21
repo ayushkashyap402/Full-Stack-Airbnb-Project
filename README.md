@@ -1,8 +1,9 @@
 # 🏡 Airbnb Clone  
 
+## Footer
 ![Airbnb Clone Screenshot](./public/images/project-screenshot.png) 
+## Navbar
 ![Airbnb Clone Screenshot](./public/images/project-screenshot2.png)   
-*(Replace the above path with your actual screenshot or hosted image URL)*  
 
 ## 📌 Project Overview  
 This project is a **full-stack web application** that replicates the **core functionality of Airbnb**.  
