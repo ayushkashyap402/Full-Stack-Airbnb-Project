@@ -12,6 +12,6 @@ const reviewSchema = new Schema({
         type: Date,
         default: Date.now()
     }
-})
+});
 
 module.exports = mongoose.model("Review", reviewSchema);
