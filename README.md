@@ -3,7 +3,7 @@
 ## Footer
 ![Airbnb Clone Screenshot](https://github.com/ayushkashyap402/Full-Stack-Airbnb-Project/blob/main/public/images/project-screensort.png)
 ## Navbar
-![Airbnb Clone Screenshot](../public/images/project-screenshot2.png)   
+![Airbnb Clone Screenshot](https://github.com/ayushkashyap402/Full-Stack-Airbnb-Project/blob/main/public/images/project-screensort2.png)
 
 ## 📌 Project Overview  
 This project is a **full-stack web application** that replicates the **core functionality of Airbnb**.  
