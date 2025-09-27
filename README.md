@@ -1,7 +1,7 @@
 # 🏡 Airbnb Clone  
 
 ## Footer
-![Airbnb Clone Screenshot](./public/images/project-screenshot.png) 
+![Airbnb Clone Screenshot](https://github.com/ayushkashyap402/Full-Stack-Airbnb-Project/blob/main/public/images/project-screensort.png)
 ## Navbar
 ![Airbnb Clone Screenshot](./public/images/project-screenshot2.png)   
 
