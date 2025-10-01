@@ -8,13 +8,11 @@
       <div class="card col-6 offfset-2 show-card listing-card">
         <img src="<%= listing.image %>" class="card-img-top show-img" alt="listing_image" />
         <div class="card-body show-list" >
-          <p class="card-text">
-            <br/>
-            <%= listing.description %> <br/>
-             &#8377; <%= listing.price ? Number(listing.price).toLocaleString('en-IN') : 'N/A'  %> <br/>
-                <%= listing.location %> <br/>
-                  <%= listing.country %>
-          </p>
+          <p class="card-text">Owned by <i><%= listing.owner.username %></i></p>
+          <p class="card-text"><%= listing.description %></p>
+          <p class="card-text">&#8377; <%= listing.price ? Number(listing.price).toLocaleString('en-IN') : 'N/A'  %> </p>
+          <p class="card-text"><%= listing.location %></p> 
+          <p class="card-text"><%= listing.country %></p>
         </div>
       </div>
 
