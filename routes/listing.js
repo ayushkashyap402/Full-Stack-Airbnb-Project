@@ -21,9 +21,13 @@ router.route("/")
      wrapAsync(listingController.createListing)
 );
 
+
+
 // New Route
 router.route("/new")
  .get( isLoggedIn, listingController.renderNewForm );
+
+
 
 
 router.route("/:id")
