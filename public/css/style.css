@@ -148,3 +148,7 @@ body {
     font-size: 14px;
     color: #717171;
 }
+
+.main-content {
+    flex-grow: 1;
+}
