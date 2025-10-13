@@ -14,6 +14,10 @@ body {
     background-color: white;
 }
 
+.container-fluid {
+  background-color: white;
+}
+
 .fa-google-wallet {
      color :#fe424d;
      font-size: 2rem;
@@ -110,6 +114,7 @@ body {
 /* Show Page */
 .show-img {
     height: 30vh;
+    display: flex;
 }
 
 .btns {
@@ -133,6 +138,7 @@ body {
 #map {
     height: 300px;
     width: 110vh;
+
 }
 
 /* Map location-text popup*/
