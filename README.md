@@ -31,5 +31,5 @@ It is built using **Node.js, Express.js, EJS (templating), and MongoDB with Mong
 
 ### 🔗 Clone the Repository  
 ```bash
-git clone https://github.com/your-username/airbnb-clone.git
-cd airbnb-clone
+git clone https://github.com/ayushkashyap402/Full-Stack-Airbnb-Project.git
+cd Full-Stack-Airbnb-Project-clone
