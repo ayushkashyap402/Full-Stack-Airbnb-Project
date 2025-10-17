@@ -46,7 +46,7 @@
         <div class="mb-3">
           <label for="rating" class="form-label">Rating</label>
           <fieldset class="starability-slot">
-            <input type="radio" id="r1" name="review[rating]" value="1"><label for="r1">1</label>
+            <input type="radio" id="r1" name="review[rating]" value="1" required><label for="r1">1</label>
             <input type="radio" id="r2" name="review[rating]" value="2"><label for="r2">2</label>
             <input type="radio" id="r3" name="review[rating]" value="3"><label for="r3">3</label>
             <input type="radio" id="r4" name="review[rating]" value="4"><label for="r4">4</label>
@@ -99,5 +99,15 @@
 
   </div>
 </section>
+
+<script>
+document.querySelector('.needs-validation').addEventListener('submit', (e) => {
+  const ratingSelected = document.querySelector('input[name="review[rating]"]:checked');
+  if (!ratingSelected) {
+    e.preventDefault();
+    alert("Please select a rating before submitting your review.");
+  }
+});
+</script>
 
 <script src="/js/map.js"></script>
