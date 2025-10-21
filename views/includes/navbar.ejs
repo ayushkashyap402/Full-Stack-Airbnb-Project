@@ -164,9 +164,9 @@
           aria-expanded="false"
         >
           <i class="fa-solid fa-bars"></i>
+           <% if(currUser){ %>
           <i class="fa-solid fa-user-circle fs-5"></i>
-          <% if(currUser){ %>
-            <span class="username"><%= currUser.username %></span>
+         <span class="username"><%= currUser.username %></span>
           <% } %>
         </div>
 
