@@ -1,0 +1,60 @@
+<% layout('/layouts/boilerplate') %>
+
+<section class="py-5">
+  <div class="container">
+    <div class="row align-items-center mb-4">
+      <div class="col-auto">
+        <div class="profile-avatar" style="width:120px;height:120px;border-radius:50%;overflow:hidden;border:4px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,0.08)">
+          <% if (user && user.image && user.image.url) { %>
+            <img src="<%= user.image.url %>" alt="Profile image" style="width:100%;height:100%;object-fit:cover;"/>
+          <% } else { %>
+            <img src="https://ui-avatars.com/api/?name=<%= encodeURIComponent(user.username) %>&background=ff385c&color=fff&size=120" alt="avatar" style="width:100%;height:100%;object-fit:cover;"/>
+          <% } %>
+        </div>
+      </div>
+      <div class="col">
+        <h2 class="mb-1"><%= user.username %></h2>
+        <p class="text-muted mb-1"><%= user.email %></p>
+        <div class="d-flex gap-3 mt-2">
+          <span class="badge bg-light text-dark">Listings: <strong><%= listingsCount %></strong></span>
+          <span class="badge bg-light text-dark">Reviews: <strong><%= reviewsCount %></strong></span>
+        </div>
+      </div>
+      <div class="col-auto">
+        <form action="/profile/image" method="POST" enctype="multipart/form-data">
+          <label class="btn btn-outline-secondary mb-0">
+            Upload Image <input type="file" name="profile[image]" accept="image/*" hidden onchange="this.form.submit()">
+          </label>
+        </form>
+      </div>
+    </div>
+
+    <hr />
+
+    <div>
+      <h5>Your Listings</h5>
+      <% if(userListings && userListings.length > 0) { %>
+        <div class="row row-cols-1 row-cols-md-3 g-3 mt-2">
+          <% for(let l of userListings) { %>
+            <div class="col">
+              <a href="/listings/<%= l._id %>" class="text-decoration-none text-dark">
+                <div class="card h-100 listing-card">
+                  <img src="<%= l.image && l.image.url ? l.image.url : 'https://via.placeholder.com/400x250' %>" class="card-img-top" style="height:160px;object-fit:cover;" />
+                  <div class="card-body">
+                    <h6 class="mb-1"><%= l.title %></h6>
+                    <p class="text-muted small mb-0">₹ <%= l.price ? Number(l.price).toLocaleString('en-IN') : 'N/A' %></p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          <% } %>
+        </div>
+        <% if (listingsCount > userListings.length) { %>
+          <a href="/listings/mine" class="btn btn-link mt-3">View all your listings</a>
+        <% } %>
+      <% } else { %>
+        <p class="text-muted">You don't have any listings yet. <a href="/listings/new">Create one</a>.</p>
+      <% } %>
+    </div>
+  </div>
+</section>

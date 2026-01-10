@@ -34,7 +34,7 @@ async function main() {
     await mongoose.connect(dbUrl);
 }
 
-app.set("views engine", "ejs");
+app.set("view engine", "ejs");
 app.set("views", path.join(__dirname,"views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
@@ -50,7 +50,7 @@ const store = MongoStore.create({
     touchAfter: 24 * 3600,
 });
 
-store.on("error", () => {
+store.on("error", (err) => {
     console.log("ERROR in MONGO SESSION STORE", err);
 });
 
@@ -99,6 +99,11 @@ app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
 
 app.use("/", userRouter);
+
+// Redirect root to listings for user-friendly root page
+app.get('/', (req, res) => {
+    return res.redirect('/listings');
+});
 
 app.all(/.*/, (req, res, next) => {
   next(new ExpressError(404, "Page Not Found!"));

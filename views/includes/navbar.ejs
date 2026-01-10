@@ -138,16 +138,13 @@
 
     <!-- Center Search (Floating Red-White Box) -->
     <div class="search-container d-none d-lg-flex">
-      <div class="search-box">
-        <span class="search-item">Anywhere</span>
+      <form class="search-box" action="/listings" method="GET" role="search">
+        <input name="q" class="form-control border-0 bg-transparent" type="search" placeholder="Search anywhere — e.g. Goa, villa, beach" aria-label="Search listings" style="outline:none; box-shadow:none;">
         <div class="search-divider"></div>
-        <span class="search-item">Any week</span>
-        <div class="search-divider"></div>
-        <span class="text-muted">Add guests</span>
-        <div class="search-icon">
+        <button type="submit" class="search-icon" aria-label="Search">
           <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
-      </div>
+        </button>
+      </form>
     </div>
 
     <!-- Right Side (User and Globe) -->
@@ -176,7 +173,8 @@
             <li><a class="dropdown-item" href="/signup">Sign Up</a></li>
           <% } else { %>
             <li><a class="dropdown-item" href="/profile">Profile</a></li>
-            <li><a class="dropdown-item" href="/listings">My Listings</a></li>
+            <li><a class="dropdown-item" href="/listings/mine">My Listings</a></li>
+            <li><a class="dropdown-item" href="/help">Help & Support</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item text-danger" href="/logout">Logout</a></li>
           <% } %>

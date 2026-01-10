@@ -107,20 +107,23 @@
 <div class="row row-cols-lg-3 row-cols-md-2 row cols-sm-1 mt-3">
 <% for(let listing of allListings){ %>
 <a href="/listings/<%= listing._id %>" class="listing-link">
-<div class="card col listing-card">
-  <img src="<%= listing.image.url %>" 
-  class="card-img-top" 
-  alt="listing_image" 
-  style="height: 20rem"/>
-  <div class="card-img-overlay"></div>
-  <div class="card-body">
-    <p class="card-text">
-        <b><%= listing.title %></b> <br/>
-        &#8377;<%= listing.price ? Number(listing.price).toLocaleString('en-IN') : 'N/A'  %> / night
+  <div class="card col listing-card">
+    <img src="<%= listing.image.url %>" 
+      class="card-img-top" 
+      alt="listing_image" 
+      style="height: 20rem"/>
+    <div class="card-img-overlay"></div>
+    <div class="card-body">
+      <div class="card-meta d-flex justify-content-between align-items-start">
+        <h6 class="listing-title mb-1"><%= listing.title %></h6>
+        <span class="price-tag">&#8377;<%= listing.price ? Number(listing.price).toLocaleString('en-IN') : 'N/A'  %></span>
+      </div>
+      <p class="card-text text-muted small location-text">
+        <i class="fa fa-map-marker-alt me-1"></i><%= listing.location || '' %>
         <i class="tax-info">&nbsp; &nbsp; +18% GST</i>
-    </p>
+      </p>
+    </div>
   </div>
-</div>
 </a>
 <% } %>
 </div>

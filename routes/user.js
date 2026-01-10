@@ -8,6 +8,9 @@ const { saveRedirectUrl } = require("../middleware.js");
 
 const userController = require("../controllers/users.js");
 const user = require("../models/user.js");
+const multer  = require('multer');
+const { storage } = require('../cloudConfig.js');
+const upload = multer({ storage });
 
 
 router.route("/signup")
@@ -34,5 +37,14 @@ router.route("/login")
 
 // Logout 
 router.get("/logout",userController.logout);
+
+// Profile
+router.get('/profile', userController.renderProfile);
+
+// Update profile image
+router.post('/profile/image', upload.single('profile[image]'), userController.updateProfileImage);
+
+// Help & Support
+router.get('/help', userController.renderHelp);
 
 module.exports = router;

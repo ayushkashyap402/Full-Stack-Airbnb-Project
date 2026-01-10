@@ -5,8 +5,30 @@ const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 // Index Route 
 module.exports.index = async(req, res) => {
-  const allListings = await Listing.find({});
-       res.render("listings/index.ejs", { allListings });
+  const { q } = req.query;
+  let allListings;
+  if (q && q.trim().length > 0) {
+    // escape regex special chars
+    const escapeRegex = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const regex = new RegExp(escapeRegex(q.trim()), "i");
+    allListings = await Listing.find({
+      $or: [
+        { title: regex },
+        { description: regex },
+        { location: regex },
+        { country: regex }
+      ]
+    });
+  } else {
+    allListings = await Listing.find({});
+  }
+
+  // If user searched and nothing matched, show a friendly not-found page
+  if (q && q.trim().length > 0 && Array.isArray(allListings) && allListings.length === 0) {
+    return res.status(404).render("listings/notfound.ejs", { query: q.trim() });
+  }
+
+  res.render("listings/index.ejs", { allListings, searchQuery: q || '' });
 };
 
 
@@ -109,4 +131,19 @@ module.exports.destroyListing = async (req, res) => {
   console.log(deletedListing);
   req.flash("success", "Listing Deleted!");
   res.redirect("/listings");
+};
+
+// My Listings - show listings for current user
+module.exports.myListings = async (req, res) => {
+  const userId = req.user && req.user._id;
+  if (!userId) {
+    req.flash('error', 'You must be logged in to view your listings.');
+    return res.redirect('/login');
+  }
+  const myListings = await Listing.find({ owner: userId });
+  if (!myListings || myListings.length === 0) {
+    return res.render('listings/mylistings_empty.ejs');
+  }
+  // Reuse index view for listing display
+  res.render('listings/index.ejs', { allListings: myListings, searchQuery: '' });
 };

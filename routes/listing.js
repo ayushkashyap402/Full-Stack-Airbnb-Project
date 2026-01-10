@@ -27,6 +27,9 @@ router.route("/")
 router.route("/new")
  .get( isLoggedIn, listingController.renderNewForm );
 
+// My Listings - show listings owned by current user
+router.get('/mine', isLoggedIn, wrapAsync(listingController.myListings));
+
 
 
 

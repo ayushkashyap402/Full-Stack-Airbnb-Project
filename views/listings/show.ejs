@@ -2,7 +2,7 @@
 
 <script>
   const mapToken = "<%= process.env.MAP_TOKEN %>";
-  const listing = <%- JSON.stringify(listing) %>;
+  const listing = "<%- JSON.stringify(listing) %>";
 </script>
 
 <section class="listing-page py-4">
@@ -14,12 +14,12 @@
     </div>
 
     <!-- Image + Details -->
-    <div class="card border-0 shadow-sm mb-4">
+    <div class="card classic-card mb-4">
       <img src="<%= listing.image.url %>" alt="Listing Image" class="card-img-top img-fluid listing-image">
-      <div class="card-body">
-        <p class="mb-1 text-muted">Owned by <strong><%= listing.owner.username %></strong></p>
+      <div class="price-badge">₹ <%= listing.price ? Number(listing.price).toLocaleString('en-IN') : 'N/A' %></div>
+      <div class="card-body classic-body">
+        <p class="owner-chip">Owned by <strong><%= listing.owner.username %></strong></p>
         <p class="card-text"><%= listing.description %></p>
-        <p class="fw-semibold fs-5">₹ <%= listing.price ? Number(listing.price).toLocaleString('en-IN') : 'N/A' %></p>
         <p class="text-secondary"><i class="fa fa-map-marker-alt me-2"></i><%= listing.location %>, <%= listing.country %></p>
       </div>
     </div>
